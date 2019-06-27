@@ -1,0 +1,157 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>install-with-docker · Test Site</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;p&gt;This document describes the development environment installation for frontend and backend developers&lt;/p&gt;
+"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="install-with-docker · Test Site"/><meta property="og:type" content="website"/><meta property="og:url" content="https://SLedunois.github.io/documentation/"/><meta property="og:description" content="&lt;p&gt;This document describes the development environment installation for frontend and backend developers&lt;/p&gt;
+"/><meta property="og:image" content="https://SLedunois.github.io/documentation/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://SLedunois.github.io/documentation/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/documentation/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://SLedunois.github.io/documentation/blog/atom.xml" title="Test Site Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://SLedunois.github.io/documentation/blog/feed.xml" title="Test Site Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/documentation/js/scrollSpy.js"></script><link rel="stylesheet" href="/documentation/css/main.css"/><script src="/documentation/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/documentation/"><img class="logo" src="/documentation/img/favicon.ico" alt="Test Site"/><h2 class="headerTitleWithLogo">Test Site</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/documentation/docs/SUMMARY" target="_self">Docs</a></li><li class=""><a href="/documentation/help" target="_self">Help</a></li><li class=""><a href="/documentation/blog/" target="_self">Blog</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">install-with-docker</h1></header><article><div><span><p>This document describes the development environment installation for frontend and backend developers</p>
+<ol>
+<li><p>Install Docker. Docker Compose</p></li>
+<li><p>Install Git and configure SSH Key for Github</p></li>
+<li><p>Clone a Springboard and run it</p></li>
+</ol>
+<blockquote>
+<p><strong>Note</strong></p>
+<p>Code Editor software is up to developer’s choice</p>
+</blockquote>
+<h1><a class="anchor" aria-hidden="true" id="basic-installation"></a><a href="#basic-installation" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Basic Installation</h1>
+<h2><a class="anchor" aria-hidden="true" id="1-install-docker-and-docker-compose"></a><a href="#1-install-docker-and-docker-compose" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1. Install Docker and Docker Compose</h2>
+<ol>
+<li><p>Install Docker by following the reference documentation : <a href="https://docs.docker.com/install/linux/docker-ce/ubuntu/#set-up-the-repository">https://docs.docker.com/install/linux/docker-ce/ubuntu/#set-up-the-repository</a></p></li>
+<li><p>Grant non-root user to run Docker : <a href="https://docs.docker.com/install/linux/linux-postinstall/">https://docs.docker.com/install/linux/linux-postinstall/</a></p></li>
+<li><p>Install Docker Compose by following the reference documentation : <a href="https://docs.docker.com/compose/install/#install-using-pip">https://docs.docker.com/compose/install/#install-using-pip</a></p></li>
+</ol>
+<blockquote>
+<p><strong>Warning</strong></p>
+<p>Step 2 is mandatory</p>
+</blockquote>
+<blockquote>
+<p><strong>Note</strong></p>
+<p>Installation’s documentation for others OS is available here : <a href="https://docs.docker.com/install/">https://docs.docker.com/install/</a></p>
+</blockquote>
+<h2><a class="anchor" aria-hidden="true" id="2-install-git-and-configure-ssh-key-for-github"></a><a href="#2-install-git-and-configure-ssh-key-for-github" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2. Install Git and configure SSH Key for Github</h2>
+<p>Install Git:</p>
+<pre><code class="hljs">$ sudo apt install git
+</code></pre>
+<p>To set SSH key for Github, please follow the reference documentations below:</p>
+<ul>
+<li><p><a href="https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/">https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/</a></p></li>
+<li><p><a href="https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/">https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/</a></p></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="clone-a-springboard-and-run-it"></a><a href="#clone-a-springboard-and-run-it" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Clone a Springboard and run it</h2>
+<p>Get the Springboard’s boilerplate repository:</p>
+<pre><code class="hljs">    $ git clone git@github.com:entcore/springboard.git
+    $ cd springboard
+</code></pre>
+<p>Run it (frist time)</p>
+<pre><code class="hljs">    ./build.sh init
+    ./build.sh generateConf
+    ./build.sh buildFront
+    ./build.sh run
+</code></pre>
+<p>For the next runs, just launch</p>
+<pre><code class="hljs">./build.sh run
+</code></pre>
+<p>Available commands for build.sh script are:</p>
+<pre><code class="hljs">                clean : clean springboard and docker's containers
+                 init : fetch files and artefacts useful for springboard's execution
+         generateConf : generate an vertx configuration file (ent-core.json) from conf.properties
+                  run : run databases and vertx in distinct containers
+                 stop : stop containers
+      integrationTest : run integration tests
+           buildFront : fetch widgets and themes using Bower and run Gulp build. (/!\ first run can be long because of node-sass's rebuild).
+              archive : make an archive with folder /mods /assets /static
+              publish : upload the archive on nexus
+</code></pre>
+<h1><a class="anchor" aria-hidden="true" id="for-backend-development"></a><a href="#for-backend-development" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>For Backend Development</h1>
+<h2><a class="anchor" aria-hidden="true" id="install-jdk-8"></a><a href="#install-jdk-8" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Install JDK 8</h2>
+<p>Installation:</p>
+<pre><code class="hljs">$ sudo add-apt-repository ppa:webupd8team/java
+$ sudo apt-get update
+$ sudo apt-get install oracle-java8-installer
+</code></pre>
+<p>Check installation:</p>
+<pre><code class="hljs">$ java -version
+java version &quot;1.8.0_152&quot;
+Java(TM) SE Runtime Environment (build 1.8.0_152-b16)
+Java HotSpot(TM) 64-Bit Server VM (build 25.152-b16, mixed mode)
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="install-gradle-45"></a><a href="#install-gradle-45" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Install Gradle 4.5</h2>
+<p>Installation:</p>
+<pre><code class="hljs">$ cd ~/apps
+$ wget https://services.gradle.org/distributions/gradle-4.5-bin.zip
+$ unzip gradle-4.5-bin.zip
+$ ln -s gradle-4.5 gradle
+$ rm gradle-4.5-bin.zip
+</code></pre>
+<p>Add binary to Path:</p>
+<pre><code class="hljs">$ echo PATH=\&quot;\$HOME/apps/gradle/bin:\$PATH\&quot; &gt;&gt; ~/.profile
+$ . ~/.profile
+</code></pre>
+<p>Check version:</p>
+<pre><code class="hljs">$ gradle -v
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="install-your-favorite-java-ide"></a><a href="#install-your-favorite-java-ide" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Install your favorite Java IDE</h2>
+<h2><a class="anchor" aria-hidden="true" id="monitor-the-containers"></a><a href="#monitor-the-containers" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Monitor the containers</h2>
+<p>Docker Compose names container with <a href="https://docs.docker.com/compose/reference/envvars/#compose_project_name">COMPOSE_PROJECT_NAME</a> convention.
+In our context container’s name are prepended with Springboard’s directory name (${SPRINGBOARD_DIR}).</p>
+<p>You can run the below command to monitor your container’s activity</p>
+<ul>
+<li><p>List running’s containers : <code>docker ps`</code></p></li>
+<li><p>List all containers : <code>docker ps -a</code></p></li>
+<li><p>Open Neo4j’s shell : <code>docker exec -it ${SPRINGBOARD_DIR}_neo4j_1 bin/neo4j-shell</code></p></li>
+<li><p>Open PostgrSQL’s shell : <code>docker exec -it ${SPRINGBOARD_DIR}_postgres_1 psql -U web-education ong</code></p></li>
+<li><p>Open MongoDB’s shell : <code>docker exec -it ${SPRINGBOARD_DIR}_mongo_1 mongo one_gridfs</code></p></li>
+<li><p>Open a Bash’s shell on vertx’s container : <code>docker exec -it ${SPRINGBOARD_DIR}_vertx_1 bash</code></p></li>
+<li><p>Display Vertx’s logs : <code>docker logs -f ${SPRINGBOARD_DIR}_vertx_1</code></p></li>
+<li><p>Display all containers logs : <code>docker-compose logs -f</code></p></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="change-vertx-log-level"></a><a href="#change-vertx-log-level" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Change Vertx log level</h2>
+<h2><a class="anchor" aria-hidden="true" id="map-local-directories-to-container-s-volume"></a><a href="#map-local-directories-to-container-s-volume" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Map local directories to container’s volume</h2>
+<h3><a class="anchor" aria-hidden="true" id="use-your-maven-local"></a><a href="#use-your-maven-local" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>use your maven local</h3>
+<p>Uncomment</p>
+<pre><code class="hljs">#    - ~/.m2:/home/vertx/.m2
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="use-your-local-data"></a><a href="#use-your-local-data" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Use your local data</h3>
+<h2><a class="anchor" aria-hidden="true" id="use-neo4j-console"></a><a href="#use-neo4j-console" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Use Neo4j console</h2>
+<p>Add the next port’s mapping in neo4j container’s description</p>
+<pre><code class="hljs">    ports:
+        - &quot;7474:7474&quot;
+        - &quot;7687:7687&quot;
+</code></pre>
+<p>Enable Bolt Protocol in neo4j-conf/neo4j.conf</p>
+<pre><code class="hljs">dbms.connector.bolt.enabled=true
+</code></pre>
+<p>Neo4j’s Console is accessible via <a href="http://localhost:7474/browser">http://localhost:7474/browser</a></p>
+<h2><a class="anchor" aria-hidden="true" id="enable-remote-debugging"></a><a href="#enable-remote-debugging" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Enable Remote Debugging</h2>
+<p>As vertx services are running inside a docker container, it is not possible to enable local debugging.
+So we will use remote debugging to bypass this issue.</p>
+<p>First, make sure you have exposed the remote agent port from the vertx docker container.</p>
+<p>To do so, open your springboard directory and edit the file &quot;docker-compose.yml&quot;.
+It should contains the following port configuration:</p>
+<pre><code class="hljs">vertx:
+  image: opendigitaleducation/vertx-service-launcher:1.0.0
+  user: &quot;1000:1000&quot;
+  ports:
+    - &quot;8090:8090&quot;
+    - &quot;5000:5000&quot;
+</code></pre>
+<p>Then, restart your docker container using:</p>
+<pre><code class="hljs">./build.sh stop init
+</code></pre>
+<blockquote>
+<p><strong>Note</strong></p>
+<p>Behind the scene, remote debugging is enabled in vertx-service-launcher using this JVM property:</p>
+<p><code>-agentlib:jdwp=transport=dt_socket,address=5000,server=y,suspend=n</code></p>
+<p>This JVM option start an agent listening on port 5000 and letting your IDE debugging the application.</p>
+</blockquote>
+<p>Your vertx container is now ready. Let’s configure your IDE.</p>
+<p>To configure your IDE, create a new debug configuration and set followings properties:</p>
+<ul>
+<li><p>Host = localhost (or any IP address allowing to reach the vertx container)</p></li>
+<li><p>Port = 5000</p></li>
+<li><p>Connection Type = Socket Attach</p></li>
+</ul>
+<blockquote>
+<p><strong>Warning</strong></p>
+<p>If you are using Eclipse you must select all source folders you would like to debug</p>
+</blockquote>
+<p>You can now use your configuration to start a remote debug session.</p>
+<h1><a class="anchor" aria-hidden="true" id="for-frontend-development"></a><a href="#for-frontend-development" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>For Frontend Development</h1>
+</span></div></article></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#1-install-docker-and-docker-compose">1. Install Docker and Docker Compose</a></li><li><a href="#2-install-git-and-configure-ssh-key-for-github">2. Install Git and configure SSH Key for Github</a></li><li><a href="#clone-a-springboard-and-run-it">Clone a Springboard and run it</a></li><li><a href="#install-jdk-8">Install JDK 8</a></li><li><a href="#install-gradle-45">Install Gradle 4.5</a></li><li><a href="#install-your-favorite-java-ide">Install your favorite Java IDE</a></li><li><a href="#monitor-the-containers">Monitor the containers</a></li><li><a href="#change-vertx-log-level">Change Vertx log level</a></li><li><a href="#map-local-directories-to-container-s-volume">Map local directories to container’s volume</a><ul class="toc-headings"><li><a href="#use-your-maven-local">use your maven local</a></li><li><a href="#use-your-local-data">Use your local data</a></li></ul></li><li><a href="#use-neo4j-console">Use Neo4j console</a></li><li><a href="#enable-remote-debugging">Enable Remote Debugging</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/documentation/" class="nav-home"><img src="/documentation/img/favicon.ico" alt="Test Site" width="66" height="58"/></a><div><h5>Docs</h5><a href="/documentation/docs/en/doc1.html">Getting Started (or other categories)</a><a href="/documentation/docs/en/doc2.html">Guides (or other categories)</a><a href="/documentation/docs/en/doc3.html">API Reference (or other categories)</a></div><div><h5>Community</h5><a href="/documentation/en/users.html">User Showcase</a><a href="https://stackoverflow.com/questions/tagged/" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://discordapp.com/">Project Chat</a><a href="https://twitter.com/" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/documentation/blog">Blog</a><a href="https://github.com/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><a href="https://opensource.facebook.com/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/documentation/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright">Copyright © 2019 Your Name or Your Company Name</section></footer></div></body></html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>build-process · Test Site</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;p&gt;This document describes the admin console v2 build process for developers&lt;/p&gt;
+"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="build-process · Test Site"/><meta property="og:type" content="website"/><meta property="og:url" content="https://SLedunois.github.io/documentation/"/><meta property="og:description" content="&lt;p&gt;This document describes the admin console v2 build process for developers&lt;/p&gt;
+"/><meta property="og:image" content="https://SLedunois.github.io/documentation/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://SLedunois.github.io/documentation/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/documentation/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://SLedunois.github.io/documentation/blog/atom.xml" title="Test Site Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://SLedunois.github.io/documentation/blog/feed.xml" title="Test Site Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/documentation/js/scrollSpy.js"></script><link rel="stylesheet" href="/documentation/css/main.css"/><script src="/documentation/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/documentation/"><img class="logo" src="/documentation/img/favicon.ico" alt="Test Site"/><h2 class="headerTitleWithLogo">Test Site</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/documentation/docs/SUMMARY" target="_self">Docs</a></li><li class=""><a href="/documentation/help" target="_self">Help</a></li><li class=""><a href="/documentation/blog/" target="_self">Blog</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">build-process</h1></header><article><div><span><p>This document describes the admin console v2 build process for developers</p>
+<h1><a class="anchor" aria-hidden="true" id="requirements"></a><a href="#requirements" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Requirements</h1>
+<h2><a class="anchor" aria-hidden="true" id="dev-tools"></a><a href="#dev-tools" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Dev tools</h2>
+<ul>
+<li><p>git</p></li>
+<li><p>docker</p></li>
+<li><p>docker-compose</p></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="clone-admin-console-v2-project"></a><a href="#clone-admin-console-v2-project" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Clone admin console v2 project</h2>
+<p>Admin V2 project is inside Entcore project, in the 'admin' folder.</p>
+<p>Clone Entcore project from github:</p>
+<pre><code class="hljs">$ git clone git@github.com:entcore/entcore.git
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="springboard-configuration"></a><a href="#springboard-configuration" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Springboard configuration</h2>
+<p>In your springboard gradle.properties and conf.properties files, set entcoreVersion to the entcore version you just cloned in previous step.</p>
+<p>In conf.properties file, add &quot;localhost:9000&quot; to skins array (this is useful to get theme for webapack dev server running on port 9000):</p>
+<pre><code class="hljs">skins={&quot;localhost:8090&quot;:&quot;cg77&quot;, &quot;localhost:9000&quot;: &quot;cg77&quot;}
+</code></pre>
+<p>Generate springboard configuration after editing, run this command in springboard folder:</p>
+<pre><code class="hljs">./build.sh generateConf
+</code></pre>
+<h1><a class="anchor" aria-hidden="true" id="dev-build"></a><a href="#dev-build" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Dev build</h1>
+<h2><a class="anchor" aria-hidden="true" id="build-front"></a><a href="#build-front" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Build front</h2>
+<p>In entcore folder, run the following commands:</p>
+<pre><code class="hljs">./build.sh adminV2NodeClean
+./build.sh adminV2NodeBuildDev
+</code></pre>
+<p>This will clean and build typescript, saas and all needed resources files for the frontend app.</p>
+<h2><a class="anchor" aria-hidden="true" id="build-admin-gradle-module"></a><a href="#build-admin-gradle-module" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Build admin gradle module</h2>
+<p>In entcore folder, run the following commands:</p>
+<pre><code class="hljs">./build.sh adminV2GradleClean
+./build.sh adminV2GradleInstall
+</code></pre>
+<p>This will clean, build and install the admin module in maven repository. The module contains both frontend and backend needed files. This module will be deployed to springboard, see next section.</p>
+<h2><a class="anchor" aria-hidden="true" id="deploy-admin-gradle-module-to-local-springboard"></a><a href="#deploy-admin-gradle-module-to-local-springboard" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Deploy admin gradle module to local springboard</h2>
+<p>Stop springboard, remove admin module and start again springboard by executing following commands in springboard folder:</p>
+<pre><code class="hljs">./build.sh stop
+rm -rf mods/org.entcore~admin~${version}/
+./build.sh run
+</code></pre>
+<p>Test app in browser ⇒ <a href="http://localhost:8090/admin">http://localhost:8090/admin</a></p>
+<h1><a class="anchor" aria-hidden="true" id="dev-build-with-webpack-dev-server-hot-reload"></a><a href="#dev-build-with-webpack-dev-server-hot-reload" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Dev build with webpack dev server (Hot Reload)</h1>
+<blockquote>
+<p><strong>Important</strong></p>
+<p>Apply &quot;Dev build&quot; before</p>
+</blockquote>
+<h2><a class="anchor" aria-hidden="true" id="webpack-dev-server"></a><a href="#webpack-dev-server" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Webpack dev server</h2>
+<p>In entcore/docker-compose.yml, in node section, add:</p>
+<pre><code class="hljs">net: host
+</code></pre>
+<p>Exemple:</p>
+<pre><code class="hljs">node:
+  image: opendigitaleducation/node
+  working_dir: /home/node/app
+  net: host
+  volumes:
+    - ./:/home/node/app
+    - ~/.npm:/.npm
+    - ../recette:/home/node/recette # TODO : rendre générique pour appliquer à tous les springboards
+    - ../infra-front:/home/node/infra-front
+</code></pre>
+<p>In entcore folder, run the following command:</p>
+<pre><code class="hljs">./build.sh adminV2NodeDevServer
+</code></pre>
+<p>This will build and deploy files in memory after code editing, browser will refresh automatically.</p>
+<p>Test app in browser ⇒ <a href="http://localhost:9000/admin">http://localhost:9000/admin</a></p>
+<h2><a class="anchor" aria-hidden="true" id="watch-resources"></a><a href="#watch-resources" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Watch resources</h2>
+<p>Edit the following const in entcore/admin/gulpfile.admin.js:</p>
+<pre><code class="hljs">const entCoreVersion = '{version}'
+const springboardPath = '{path/to/springboard}'
+</code></pre>
+<p>Exemple:</p>
+<pre><code class="hljs">const entCoreVersion = '3.4-SNAPSHOT'
+const springboardPath = '../recette'
+</code></pre>
+<p>In entcore folder, run the following command:</p>
+<pre><code class="hljs">./build.sh adminV2NodeWatch
+</code></pre>
+<p>This task will copy modified files from entcore/admin/src/main/resources folder to springboard admin module after code editing.</p>
+<blockquote>
+<p><strong>Note</strong></p>
+<p>For i18n json files updates you will have to restart your springboard to see changes.</p>
+</blockquote>
+<h1><a class="anchor" aria-hidden="true" id="production-build-before-commit"></a><a href="#production-build-before-commit" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Production build (before commit)</h1>
+<blockquote>
+<p><strong>Important</strong></p>
+<p>Before committing your work, it is mandatory to test app with production build</p>
+</blockquote>
+<h2><a class="anchor" aria-hidden="true" id="build-front-1"></a><a href="#build-front-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Build front</h2>
+<p>In entcore folder:</p>
+<pre><code class="hljs">./build.sh adminV2NodeClean
+./build.sh adminV2NodeBuildProd
+</code></pre>
+<blockquote>
+<p><strong>Note</strong></p>
+<p>This task will generate js and css files with hash code in filename.</p>
+</blockquote>
+<h2><a class="anchor" aria-hidden="true" id="build-admin-gradle-module-1"></a><a href="#build-admin-gradle-module-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Build admin gradle module</h2>
+<pre><code class="hljs">./build.sh adminV2GradleClean
+./build.sh adminV2GradleInstall
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="deploy-admin-module-to-local-springboard"></a><a href="#deploy-admin-module-to-local-springboard" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Deploy admin module to local springboard</h2>
+<p>Stop springboard, remove admin module and start again springboard by executing following commands in springboard folder:</p>
+<pre><code class="hljs">./build.sh stop
+rm -rf mods/org.entcore~admin~${version}/
+./build.sh run
+</code></pre>
+<p>Test app in browser ⇒ <a href="http://localhost:8090/admin">http://localhost:8090/admin</a></p>
+<p>If OK then commit.</p>
+<blockquote>
+<p><strong>Important</strong></p>
+<p>After production build, to start again dev workflow, do an initial dev build (see &quot;Dev build&quot; chapter)</p>
+</blockquote>
+</span></div></article></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#dev-tools">Dev tools</a></li><li><a href="#clone-admin-console-v2-project">Clone admin console v2 project</a></li><li><a href="#springboard-configuration">Springboard configuration</a></li><li><a href="#build-front">Build front</a></li><li><a href="#build-admin-gradle-module">Build admin gradle module</a></li><li><a href="#deploy-admin-gradle-module-to-local-springboard">Deploy admin gradle module to local springboard</a></li><li><a href="#webpack-dev-server">Webpack dev server</a></li><li><a href="#watch-resources">Watch resources</a></li><li><a href="#build-front-1">Build front</a></li><li><a href="#build-admin-gradle-module-1">Build admin gradle module</a></li><li><a href="#deploy-admin-module-to-local-springboard">Deploy admin module to local springboard</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/documentation/" class="nav-home"><img src="/documentation/img/favicon.ico" alt="Test Site" width="66" height="58"/></a><div><h5>Docs</h5><a href="/documentation/docs/en/doc1.html">Getting Started (or other categories)</a><a href="/documentation/docs/en/doc2.html">Guides (or other categories)</a><a href="/documentation/docs/en/doc3.html">API Reference (or other categories)</a></div><div><h5>Community</h5><a href="/documentation/en/users.html">User Showcase</a><a href="https://stackoverflow.com/questions/tagged/" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://discordapp.com/">Project Chat</a><a href="https://twitter.com/" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/documentation/blog">Blog</a><a href="https://github.com/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><a href="https://opensource.facebook.com/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/documentation/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright">Copyright © 2019 Your Name or Your Company Name</section></footer></div></body></html>

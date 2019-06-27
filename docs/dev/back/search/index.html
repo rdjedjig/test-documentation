@@ -1,0 +1,165 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>search · Test Site</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;p&gt;ODE framework enables applications to register into the search engine module (see &lt;a href=&quot;https://github.com/OPEN-ENT-NG/search-engine&quot;&gt;Search Engine&lt;/a&gt;)&lt;/p&gt;
+"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="search · Test Site"/><meta property="og:type" content="website"/><meta property="og:url" content="https://SLedunois.github.io/documentation/"/><meta property="og:description" content="&lt;p&gt;ODE framework enables applications to register into the search engine module (see &lt;a href=&quot;https://github.com/OPEN-ENT-NG/search-engine&quot;&gt;Search Engine&lt;/a&gt;)&lt;/p&gt;
+"/><meta property="og:image" content="https://SLedunois.github.io/documentation/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://SLedunois.github.io/documentation/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/documentation/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://SLedunois.github.io/documentation/blog/atom.xml" title="Test Site Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://SLedunois.github.io/documentation/blog/feed.xml" title="Test Site Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/documentation/js/scrollSpy.js"></script><link rel="stylesheet" href="/documentation/css/main.css"/><script src="/documentation/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/documentation/"><img class="logo" src="/documentation/img/favicon.ico" alt="Test Site"/><h2 class="headerTitleWithLogo">Test Site</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/documentation/docs/SUMMARY" target="_self">Docs</a></li><li class=""><a href="/documentation/help" target="_self">Help</a></li><li class=""><a href="/documentation/blog/" target="_self">Blog</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">search</h1></header><article><div><span><p>ODE framework enables applications to register into the search engine module (see <a href="https://github.com/OPEN-ENT-NG/search-engine">Search Engine</a>)</p>
+<ul>
+<li><p>Search engine uses Publish-subscribe and Point-to-Point model. It’s backed by the Vertx Event Bus.</p></li>
+<li><p>Publish-subscribe model is used to push event to registered applications. While the Point-to-Point model allows applications to send their search’s result.</p></li>
+<li><p>Search engine API uses a fulltext model .</p></li>
+<li><p>An API and a defaut implementation are provided for standard search behaviors. You can also override it to offer alternative search’s behavior.</p></li>
+</ul>
+<blockquote>
+<p><strong>Note</strong></p>
+<p>Search engine module only support Document (MongoDB) and Relational (PostgreSQL) storage. File-type storage is not yet supported.</p>
+</blockquote>
+<h1><a class="anchor" aria-hidden="true" id="subscribe-search-event"></a><a href="#subscribe-search-event" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Subscribe Search Event</h1>
+<p>In your Application BaseServer (that extends a Verticle) add the following piece of code.</p>
+<pre><code class="hljs">// Subscribe to events published for searching
+if (config.getBoolean(&quot;searching-event&quot;, true)) {
+    setSearchingEvents(new $Application$SearchingEvents(new $SearchService()));
+}
+</code></pre>
+<blockquote>
+<p><strong>Note</strong></p>
+<p><strong>$Application$</strong> by convention is the name of the verticule. This class must implement the SearchingEvents interface. <strong>$SearchService</strong> is a class that implements the <em>SearchService</em> interface</p>
+</blockquote>
+<p><strong>examples:</strong></p>
+<ol>
+<li><p>Mongo example: <a href="https://github.com/OPEN-ENT-NG/share-big-files/blob/0.4.0/src/main/java/fr/openent/sharebigfiles/ShareBigFiles.java#L68">See</a></p></li>
+<li><p>Postgre example: <a href="https://github.com/OPEN-ENT-NG/actualites/blob/0.13.0/src/main/java/net/atos/entng/actualites/Actualites.java#L63">See</a></p></li>
+</ol>
+<h1><a class="anchor" aria-hidden="true" id="searching-events"></a><a href="#searching-events" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Searching Events</h1>
+<p>See the contract service to <a href="https://github.com/entcore/entcore/blob/1.26.0/common/src/main/java/org/entcore/common/search/SearchingEvents.java#L31">SearchingEvents</a></p>
+<p><strong>search contract</strong>:</p>
+<table>
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Args</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><p>userId</p></td>
+<td><p>String</p></td>
+<td><p>User id</p></td>
+</tr>
+<tr class="even">
+<td><p>groupIds</p></td>
+<td><p>List&lt;String&gt;</p></td>
+<td><p>groups id</p></td>
+</tr>
+<tr class="odd">
+<td><p>returnFields</p></td>
+<td><p>List&lt;String&gt;</p></td>
+<td><p>Returned fields by the backend query</p></td>
+</tr>
+<tr class="even">
+<td><p>searchWords</p></td>
+<td><p>List&lt;String&gt;</p></td>
+<td><p>Words to search</p></td>
+</tr>
+<tr class="odd">
+<td><p>page</p></td>
+<td><p>Integer</p></td>
+<td><p>current page</p></td>
+</tr>
+<tr class="even">
+<td><p>limit</p></td>
+<td><p>Integer</p></td>
+<td><p>Number of occurrences to return</p></td>
+</tr>
+<tr class="odd">
+<td><p>handler</p></td>
+<td><p>Handler&lt;Either&lt;String, JsonArray&gt;&gt;</p></td>
+<td><p>Callback with the result</p></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Warning</strong></p>
+<p>Looks at the Result chapter for the returned values convention</p>
+</blockquote>
+<h2><a class="anchor" aria-hidden="true" id="document"></a><a href="#document" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Document</h2>
+<h3><a class="anchor" aria-hidden="true" id="index"></a><a href="#index" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Index</h3>
+<p>Add a JS script to &quot;/deployment/$applicationName/migration/x.y.z/addTextIndex.js&quot;</p>
+<blockquote>
+<p><strong>Note</strong></p>
+<p>$applicationName is the name of your app. x.y.z is the version of your app.</p>
+</blockquote>
+<pre><code class="hljs">db.$collection.createIndex({ &quot;$field1&quot;: &quot;text&quot;, &quot;$fieldN&quot;: &quot;text&quot;});
+</code></pre>
+<blockquote>
+<p><strong>Note</strong></p>
+<p>$collection is the name of mongo collection, and $field1, $fieldN are attributes to be indexed</p>
+</blockquote>
+<h3><a class="anchor" aria-hidden="true" id="implementation"></a><a href="#implementation" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Implementation</h3>
+<p>Create your own $Application$SearchingEvents class with MongoDbSearchService instance.
+See example : <a href="https://github.com/OPEN-ENT-NG/share-big-files/blob/0.4.0/src/main/java/fr/openent/sharebigfiles/services/ShareBigFilesSearchingEvents.java#L36">ShareBigFilesSearchingEvents</a></p>
+<h2><a class="anchor" aria-hidden="true" id="relational-data"></a><a href="#relational-data" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Relational data</h2>
+<h3><a class="anchor" aria-hidden="true" id="index-1"></a><a href="#index-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Index</h3>
+<p>Add a SQL script to &quot;src/main/resources/sql/xxx-$applicationName.sql&quot;</p>
+<blockquote>
+<p><strong>Note</strong></p>
+<p>$applicationName is the name of your app. xxx is the number version of your script.</p>
+</blockquote>
+<pre><code class="hljs"> -- specific configuration to language natively create vectors without accents (one configuration per supported language)
+ CREATE TEXT SEARCH CONFIGURATION  fr ( COPY = french ) ;
+ ALTER TEXT SEARCH CONFIGURATION fr ALTER MAPPING
+ FOR hword, hword_part, word WITH unaccent, french_stem;
+
+ -- With evolution of create services, it is possible to manage multiple languages to search for the same application instance
+ ALTER TABLE $schema.$resourceTable ADD language VARCHAR(2) NOT NULL DEFAULT('fr');
+
+ ALTER TABLE $schema.$resourceTable ADD COLUMN text_searchable tsvector;
+
+ -- Only if data alreay exists
+ UPDATE $schema.$resourceTable SET text_searchable =
+      to_tsvector(language::regconfig, coalesce(title,'') || ' ' || coalesce(regexp_replace(content, '&lt;[^&gt;]*&gt;',' ','g'),'')    );
+
+ CREATE INDEX textsearch_idx ON $schema.$resourceTable USING gin(text_searchable);
+
+ CREATE FUNCTION $schema.text_searchable_trigger() RETURNS trigger AS $$
+ begin
+   new.text_searchable := to_tsvector(new.language::regconfig, coalesce(new.title,'') || ' ' || coalesce(regexp_replace(new.content, '&lt;[^&gt;]*&gt;',' ','g'),''));
+   return new;
+ end
+ $$ LANGUAGE plpgsql;
+
+ CREATE TRIGGER tsvector_update_trigger BEFORE INSERT OR UPDATE
+     ON $schema.$resourceTable FOR EACH ROW EXECUTE PROCEDURE $schema.text_searchable_trigger();
+</code></pre>
+<blockquote>
+<p><strong>Note</strong></p>
+<p>$schema is schema of the application and $resourceTable is replaced by the name of the table that contains the searchable resources</p>
+</blockquote>
+<blockquote>
+<p><strong>Warning</strong></p>
+<p><strong>text_searchable_trigger</strong> function must use fields of your choice. In this case, indexed field are <strong>title</strong> and html <strong>content</strong></p>
+</blockquote>
+<h3><a class="anchor" aria-hidden="true" id="implementation-1"></a><a href="#implementation-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Implementation</h3>
+<p>Create your own $Application$SearchingEvents class with SqlSearchService instance.
+See example : <a href="https://github.com/OPEN-ENT-NG/actualites/blob/0.13.0/src/main/java/net/atos/entng/actualites/services/impl/ActualitesSearchingEvents.java#L46">ActualitesSearchingEvents</a></p>
+<h1><a class="anchor" aria-hidden="true" id="result"></a><a href="#result" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Result</h1>
+<p>The result must be formatted according to the following convention</p>
+<p><strong>Json result example:</strong></p>
+<pre><code class="hljs">[
+    {
+      &quot;title&quot;:&quot;resource title&quot;,
+      &quot;description&quot;:&quot;resource description&quot;,
+      &quot;modified&quot;: &quot;modified date&quot;,
+      &quot;ownerDisplayName&quot;: &quot;owner fullname&quot;,
+      &quot;ownerId&quot;: &quot;owner uid&quot;,
+      &quot;url&quot;: &quot;resource link&quot;
+    }, ...
+]
+</code></pre>
+<h1><a class="anchor" aria-hidden="true" id="reference"></a><a href="#reference" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Reference</h1>
+<p><a href="https://docs.mongodb.com/manual/reference/operator/query/text">https://docs.mongodb.com/manual/reference/operator/query/text</a>
+<a href="https://www.postgresql.org/docs/9.5/static/textsearch.html">https://www.postgresql.org/docs/9.5/static/textsearch.html</a></p>
+</span></div></article></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#document">Document</a><ul class="toc-headings"><li><a href="#index">Index</a></li><li><a href="#implementation">Implementation</a></li></ul></li><li><a href="#relational-data">Relational data</a><ul class="toc-headings"><li><a href="#index-1">Index</a></li><li><a href="#implementation-1">Implementation</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/documentation/" class="nav-home"><img src="/documentation/img/favicon.ico" alt="Test Site" width="66" height="58"/></a><div><h5>Docs</h5><a href="/documentation/docs/en/doc1.html">Getting Started (or other categories)</a><a href="/documentation/docs/en/doc2.html">Guides (or other categories)</a><a href="/documentation/docs/en/doc3.html">API Reference (or other categories)</a></div><div><h5>Community</h5><a href="/documentation/en/users.html">User Showcase</a><a href="https://stackoverflow.com/questions/tagged/" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://discordapp.com/">Project Chat</a><a href="https://twitter.com/" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/documentation/blog">Blog</a><a href="https://github.com/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><a href="https://opensource.facebook.com/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/documentation/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright">Copyright © 2019 Your Name or Your Company Name</section></footer></div></body></html>

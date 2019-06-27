@@ -1,0 +1,164 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>dev-env-install · Test Site</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;p&gt;This document describes the development environment installation for frontend and backend developers.&lt;/p&gt;
+"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="dev-env-install · Test Site"/><meta property="og:type" content="website"/><meta property="og:url" content="https://SLedunois.github.io/documentation/"/><meta property="og:description" content="&lt;p&gt;This document describes the development environment installation for frontend and backend developers.&lt;/p&gt;
+"/><meta property="og:image" content="https://SLedunois.github.io/documentation/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://SLedunois.github.io/documentation/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/documentation/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://SLedunois.github.io/documentation/blog/atom.xml" title="Test Site Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://SLedunois.github.io/documentation/blog/feed.xml" title="Test Site Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/documentation/js/scrollSpy.js"></script><link rel="stylesheet" href="/documentation/css/main.css"/><script src="/documentation/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/documentation/"><img class="logo" src="/documentation/img/favicon.ico" alt="Test Site"/><h2 class="headerTitleWithLogo">Test Site</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/documentation/docs/SUMMARY" target="_self">Docs</a></li><li class=""><a href="/documentation/help" target="_self">Help</a></li><li class=""><a href="/documentation/blog/" target="_self">Blog</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">dev-env-install</h1></header><article><div><span><p>This document describes the development environment installation for frontend and backend developers.</p>
+<blockquote>
+<p><strong>Note</strong></p>
+<p>This documentation has been tested for Ubuntu 16.04</p>
+</blockquote>
+<h1><a class="anchor" aria-hidden="true" id="apps-list"></a><a href="#apps-list" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Apps List</h1>
+<ol>
+<li><p>Mongo 3.2</p></li>
+<li><p>Postgres 9.5</p></li>
+<li><p>Neo4j 2.3.2</p></li>
+<li><p>Nodejs</p></li>
+<li><p>Gulp</p></li>
+<li><p>JDK 7</p></li>
+<li><p>Gradle 1.6</p></li>
+<li><p>Vert.x 2.1.6</p></li>
+<li><p>Git</p></li>
+<li><p>SSH Key for github</p></li>
+</ol>
+<blockquote>
+<p><strong>Note</strong></p>
+<p>Code Editor software is up to developer’s choice</p>
+</blockquote>
+<h1><a class="anchor" aria-hidden="true" id="installation-guide"></a><a href="#installation-guide" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Installation Guide</h1>
+<h2><a class="anchor" aria-hidden="true" id="1-mongo-32"></a><a href="#1-mongo-32" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1. Mongo 3.2</h2>
+<p>Installation:</p>
+<pre><code class="hljs">$ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927
+$ echo &quot;deb http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.2 multiverse&quot; | sudo tee /etc/apt/sources.list.d/mongodb-org-3.2.list
+$ sudo apt-get update
+$ sudo apt-get install -y mongodb-org=3.2.12 mongodb-org-server=3.2.12 mongodb-org-shell=3.2.12 mongodb-org-mongos=3.2.12 mongodb-org-tools=3.2.12
+</code></pre>
+<p>Check version:</p>
+<pre><code class="hljs">$ mongod --version
+db version v3.2.12
+</code></pre>
+<p>Start service:</p>
+<pre><code class="hljs">$ sudo service mongod start
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="2-postgres-95"></a><a href="#2-postgres-95" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2. Postgres 9.5</h2>
+<p>Check candidate version is 9.5:</p>
+<pre><code class="hljs">$ apt-cache policy postgresql
+Candidate: 9.5+173
+
+$ sudo apt update
+$ sudo apt install postgresql postgresql-contrib
+</code></pre>
+<p>Create user : web-education / We_1234</p>
+<pre><code class="hljs">$ sudo su - postgres
+$ psql
+$ create user &quot;web-education&quot; createdb createuser password 'We_1234';
+</code></pre>
+<p>Create databases ong and one:</p>
+<pre><code class="hljs">$ create database ong owner &quot;web-education&quot;;
+$ create database one owner &quot;web-education&quot;;
+</code></pre>
+<p>Start Service:</p>
+<pre><code class="hljs">$ sudo service postgresql start
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="3-neo4j-316"></a><a href="#3-neo4j-316" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>3. Neo4j 3.1.6</h2>
+<p>Add package repository:</p>
+<pre><code class="hljs">$ wget -O - https://debian.neo4j.org/neotechnology.gpg.key | sudo apt-key add -
+$ echo 'deb https://debian.neo4j.org/repo stable/' | sudo tee /etc/apt/sources.list.d/neo4j.list
+$ sudo apt-get update
+</code></pre>
+<p>Installation:</p>
+<pre><code class="hljs">$ sudo apt-get install neo4j=3.1.6
+</code></pre>
+<p>Add configuration in <strong>/etc/neo4j/neo4j.conf</strong> :</p>
+<pre><code class="hljs"># Enable auto-indexing for nodes, default is false
+dbms.auto_index.nodes.enabled=true
+
+# The node property keys to be auto-indexed, if enabled
+dbms.auto_index.nodes.keys=name
+
+dbms.security.auth_enabled=false
+
+# Cypher language compatibility
+cypher.default_language_version=2.3
+</code></pre>
+<p>Start Service:</p>
+<pre><code class="hljs">$ sudo service neo4j start
+</code></pre>
+<blockquote>
+<p><strong>Note</strong></p>
+<p>Neo4j http url <a href="http://localhost:7474">http://localhost:7474</a></p>
+</blockquote>
+<h2><a class="anchor" aria-hidden="true" id="4-nodejs"></a><a href="#4-nodejs" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>4. NodeJS</h2>
+<p>Download:</p>
+<pre><code class="hljs">$ mkdir ~/apps
+$ cd ~/apps
+$ wget https://nodejs.org/dist/v6.10.0/node-v6.10.0-linux-x64.tar.xz
+$ tar xf node-v6.10.0-linux-x64.tar.xz
+$ ln -s node-v6.10.0-linux-x64 node
+</code></pre>
+<p>Add binary to Path:</p>
+<pre><code class="hljs">$ echo PATH=\&quot;\$HOME/apps/node/bin:\$PATH\&quot; &gt;&gt; ~/.profile
+$ . ~/.profile
+</code></pre>
+<p>Check version:</p>
+<pre><code class="hljs">$ node -v
+v6.10.0
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="5-gulp"></a><a href="#5-gulp" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>5. Gulp</h2>
+<p>Installation:</p>
+<pre><code class="hljs">$ npm install -g gulp
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="6-jdk-8"></a><a href="#6-jdk-8" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>6. JDK 8</h2>
+<p>Installation:</p>
+<pre><code class="hljs">$ sudo add-apt-repository ppa:webupd8team/java
+$ sudo apt-get update
+$ sudo apt-get install oracle-java8-installer
+</code></pre>
+<p>Check installation:</p>
+<pre><code class="hljs">$ java -version
+java version &quot;1.8.0_152&quot;
+Java(TM) SE Runtime Environment (build 1.8.0_152-b16)
+Java HotSpot(TM) 64-Bit Server VM (build 25.152-b16, mixed mode)
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="7-gradle-16"></a><a href="#7-gradle-16" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>7. Gradle 1.6</h2>
+<p>Installation:</p>
+<pre><code class="hljs">$ cd ~/apps
+$ wget https://services.gradle.org/distributions/gradle-1.6-bin.zip
+$ unzip gradle-1.6-bin.zip
+$ ln -s gradle-1.6 gradle
+$ rm gradle-1.6-bin.zip
+</code></pre>
+<p>Add binary to Path:</p>
+<pre><code class="hljs">$ echo PATH=\&quot;\$HOME/apps/gradle/bin:\$PATH\&quot; &gt;&gt; ~/.profile
+$ . ~/.profile
+</code></pre>
+<p>Check version:</p>
+<pre><code class="hljs">$ gradle -v
+Gradle 1.6
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="8-vertx-216"></a><a href="#8-vertx-216" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>8. Vert.x 2.1.6</h2>
+<p>Download:</p>
+<pre><code class="hljs">$ cd ~/apps
+$ wget -O vert.x-2.1.6.tar.gz https://bintray.com/vertx/downloads/download_file?file_path=vert.x-2.1.6.tar.gz
+$ tar xf vert.x-2.1.6.tar.gz$ ssh-keygen -t rsa -b 4096 -C &quot;viddouille.cc@gmail.com&quot;
+$ ln -s vert.x-2.1.6 vert.x
+$ rm vert.x-2.1.6.tar.gz
+</code></pre>
+<p>Add binary to Path:</p>
+<pre><code class="hljs">$ echo PATH=\&quot;\$HOME/apps/vert.x/bin:\$PATH\&quot; &gt;&gt; ~/.profile
+$ . ~/.profile
+</code></pre>
+<p>Check version:</p>
+<pre><code class="hljs">$ vertx version
+</code></pre>
+<p>Add following line in the vertx configuration file <strong>{VERTX_HOME}/conf/repos.txt</strong>:</p>
+<pre><code class="hljs">maven:http://maven.web-education.net/nexus/content/groups/public/
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="9-git"></a><a href="#9-git" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>9. Git</h2>
+<p>Installation:</p>
+<pre><code class="hljs">$ sudo apt install git
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="10-ssh-key-for-github"></a><a href="#10-ssh-key-for-github" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>10. SSH Key for github</h2>
+<p>To set SSH key for Github, please follow the reference documentation below:</p>
+<ul>
+<li><p><a href="https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/">https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/</a></p></li>
+<li><p><a href="https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/">https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/</a></p></li>
+</ul>
+</span></div></article></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#1-mongo-32">1. Mongo 3.2</a></li><li><a href="#2-postgres-95">2. Postgres 9.5</a></li><li><a href="#3-neo4j-316">3. Neo4j 3.1.6</a></li><li><a href="#4-nodejs">4. NodeJS</a></li><li><a href="#5-gulp">5. Gulp</a></li><li><a href="#6-jdk-8">6. JDK 8</a></li><li><a href="#7-gradle-16">7. Gradle 1.6</a></li><li><a href="#8-vertx-216">8. Vert.x 2.1.6</a></li><li><a href="#9-git">9. Git</a></li><li><a href="#10-ssh-key-for-github">10. SSH Key for github</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/documentation/" class="nav-home"><img src="/documentation/img/favicon.ico" alt="Test Site" width="66" height="58"/></a><div><h5>Docs</h5><a href="/documentation/docs/en/doc1.html">Getting Started (or other categories)</a><a href="/documentation/docs/en/doc2.html">Guides (or other categories)</a><a href="/documentation/docs/en/doc3.html">API Reference (or other categories)</a></div><div><h5>Community</h5><a href="/documentation/en/users.html">User Showcase</a><a href="https://stackoverflow.com/questions/tagged/" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://discordapp.com/">Project Chat</a><a href="https://twitter.com/" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/documentation/blog">Blog</a><a href="https://github.com/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><a href="https://opensource.facebook.com/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/documentation/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright">Copyright © 2019 Your Name or Your Company Name</section></footer></div></body></html>

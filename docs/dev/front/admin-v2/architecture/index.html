@@ -1,0 +1,433 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>architecture · Test Site</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;p&gt;This document presents the Admin v2 project architecture. Document objective is to help developers understand the Admin v2 project files organization and source code architecture in order to get familiar with it and facilitate new admin v2 developer insertion.&lt;/p&gt;
+"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="architecture · Test Site"/><meta property="og:type" content="website"/><meta property="og:url" content="https://SLedunois.github.io/documentation/"/><meta property="og:description" content="&lt;p&gt;This document presents the Admin v2 project architecture. Document objective is to help developers understand the Admin v2 project files organization and source code architecture in order to get familiar with it and facilitate new admin v2 developer insertion.&lt;/p&gt;
+"/><meta property="og:image" content="https://SLedunois.github.io/documentation/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://SLedunois.github.io/documentation/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/documentation/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://SLedunois.github.io/documentation/blog/atom.xml" title="Test Site Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://SLedunois.github.io/documentation/blog/feed.xml" title="Test Site Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/documentation/js/scrollSpy.js"></script><link rel="stylesheet" href="/documentation/css/main.css"/><script src="/documentation/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/documentation/"><img class="logo" src="/documentation/img/favicon.ico" alt="Test Site"/><h2 class="headerTitleWithLogo">Test Site</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/documentation/docs/SUMMARY" target="_self">Docs</a></li><li class=""><a href="/documentation/help" target="_self">Help</a></li><li class=""><a href="/documentation/blog/" target="_self">Blog</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">architecture</h1></header><article><div><span><p>This document presents the Admin v2 project architecture. Document objective is to help developers understand the Admin v2 project files organization and source code architecture in order to get familiar with it and facilitate new admin v2 developer insertion.</p>
+<h1><a class="anchor" aria-hidden="true" id="project-repository"></a><a href="#project-repository" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Project Repository</h1>
+<p>Admin v2 app is located in Entcore github repository:</p>
+<p>URL<br>
+<a href="https://github.com/entcore/entcore">https://github.com/entcore/entcore</a></p>
+<h1><a class="anchor" aria-hidden="true" id="files-structure"></a><a href="#files-structure" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Files Structure</h1>
+<h2><a class="anchor" aria-hidden="true" id="root-folder"></a><a href="#root-folder" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Root Folder</h2>
+<p>Admin v2 app resides inside <strong>entcore</strong> project, in <strong>admin</strong> folder:</p>
+<pre><code class="hljs">entcore/admin
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="dependencies"></a><a href="#dependencies" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Dependencies</h2>
+<p>Needed dependencies for development and app execution (like Angular, TypeScript, Gulp, …​) are listed in:</p>
+<pre><code class="hljs">entcore/package.json
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="build-files"></a><a href="#build-files" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Build Files</h2>
+<p>Admin v2 is bundled using <strong>Webpack 2</strong> and built through <strong>Gulp</strong> tasks.</p>
+<blockquote>
+<p><strong>Note</strong></p>
+<p>Build process is described here: <a href="https://github.com/web-education/reference-manual/blob/master/dev/front/admin-v2/build-process.adoc">https://github.com/web-education/reference-manual/blob/master/dev/front/admin-v2/build-process.adoc</a></p>
+</blockquote>
+<h3><a class="anchor" aria-hidden="true" id="entcore-build-file"></a><a href="#entcore-build-file" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Entcore Build File</h3>
+<p>As part of Entcore project, Admin v2 can be built using Entcore build process, based on <strong>Gulp</strong>. The main <strong>gulpfile</strong> is located here:</p>
+<pre><code class="hljs">entcore/gulpfile.js
+</code></pre>
+<p>It contains the main <strong>build</strong> task, that builds all entcore front apps <strong>including admin v2</strong>.</p>
+<h3><a class="anchor" aria-hidden="true" id="admin-v2-build-files"></a><a href="#admin-v2-build-files" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Admin V2 Build Files</h3>
+<p>Admin v2 can also be built <strong>independently</strong> from Entcore by using Admin v2 specific tasks. Admin v2 specific <strong>gulpfile</strong> is located here:</p>
+<pre><code class="hljs">entcore/admin/gulpfile.admin.js
+</code></pre>
+<p>It contains specific admin-v2 tasks:</p>
+<p>clean<br>
+clean generated files</p>
+<p>build-dev<br>
+build app, <strong>dev</strong> mode, see <strong>webpack</strong> configuration file <em>entcore/admin/webpack.config.dev.js</em></p>
+<p>build<br>
+build app, <strong>production</strong> mode, see configuration file <em>entcore/admin/webpack.config.prod.js</em></p>
+<p>devserver<br>
+build app and start a server supporting <strong>hot reload</strong>, configuration can be found in <em>entcore/admin/webpack.config.devserver.js</em></p>
+<p>watch<br>
+copy resources files to springboard. Configure <em>springboardPath</em> variable in <em>entcore/admin/gulpfile.admin.js</em> to adjust your springboard path.</p>
+<h2><a class="anchor" aria-hidden="true" id="resources"></a><a href="#resources" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Resources</h2>
+<p>Resources root folder:</p>
+<pre><code class="hljs">entcore/admin/src/main/resources
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="styles-fonts"></a><a href="#styles-fonts" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Styles &amp; Fonts</h3>
+<pre><code class="hljs">resources/
+    public/
+        styles/
+            admin.scss 
+            flatpickr-confetti.css 
+            generic-icons-1.0.0.woff 
+            font-awesome-4.7.0/ 
+</code></pre>
+<ul>
+<li><p>Main SASS file: contains admin v2 styles. SASS file is compiled into CSS during build phase (see file: <em>entcore/admin/webpack.config.common.js</em> for more details)</p></li>
+<li><p>Datepicker CSS file, this file is <strong>generated during build phase</strong> (see <em>copy-flatpickr-css</em> task in file <em>entcore/admin/gulpfile.admin.js</em>)</p></li>
+<li><p>Generic icons lib, see: <a href="https://github.com/entcore/generic-icons">https://github.com/entcore/generic-icons</a> for more details</p></li>
+<li><p>Font Awesome icons</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="i18n"></a><a href="#i18n" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>I18n</h3>
+<pre><code class="hljs">resources/
+    i18n/
+        en.json 
+        fr.json 
+</code></pre>
+<ul>
+<li><p>Admin v2 is not yet translated in English</p></li>
+<li><p>French file, contains all labels keys and values</p></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="typescript"></a><a href="#typescript" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>TypeScript</h2>
+<p>TypeScript files are located in:</p>
+<pre><code class="hljs">entcore/admin/src/main/ts
+</code></pre>
+<p>TypeScript files structure overview:</p>
+<pre><code class="hljs">ts/
+    app/ 
+    libs/ 
+    main.aot.ts 
+    main.ts 
+    tsconfig.aot.json 
+    tsconfig.json 
+</code></pre>
+<ul>
+<li><p><strong>app/</strong>: app source code root, see <a href="#_app_architecture">section_title</a> for more details</p></li>
+<li><p><strong>libs/</strong>: contains vendors imports for webpack bundle</p></li>
+<li><p><strong>main.aot.ts</strong>: angular bootstrap for AOT mode (see: <a href="https://angular.io/guide/aot-compiler">https://angular.io/guide/aot-compiler</a> for more details on AOT compilation)</p></li>
+<li><p><strong>main.ts</strong>: angular bootstrap for dev mode</p></li>
+<li><p><strong>tsconfig.aot.json</strong>: typescript configuration for <strong>production</strong> mode → <strong>AOT</strong> compilation</p></li>
+<li><p><strong>tsconfig.json</strong>: typescript configuration for <strong>dev</strong> mode</p></li>
+</ul>
+<h1><a class="anchor" aria-hidden="true" id="app-architecture"></a><a href="#app-architecture" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>App Architecture</h1>
+<p>App source code structure:</p>
+<pre><code class="hljs">ts/
+    app/
+        core/ ................... core module (nav, resolvers, services, stores)
+        groups/ ................. groups module (routing, resolvers, components)
+        shared/ ................. shared module (UX components)
+        structure/ .............. structure module (routing, resolvers, components)
+        users/ .................. users module (routing, resolvers, components)
+        app-home.component.ts ... app home component
+        app-routing.module.ts ... app routing
+        app.component.ts ........ app component (outlet for router)
+        app.module.ts ........... app module
+</code></pre>
+<p>Admin v2 source code is splitted in Angular modules:</p>
+<ul>
+<li><p><strong>app</strong> module</p></li>
+<li><p><strong>core</strong> module</p></li>
+<li><p><strong>groups</strong> module</p></li>
+<li><p><strong>shared</strong> module</p></li>
+<li><p><strong>structure</strong> module</p></li>
+<li><p><strong>users</strong> module</p></li>
+<li><p>…​ more modules to come :)</p></li>
+</ul>
+<p>Each module contains its specifics <strong>components</strong>, <strong>routing</strong>, <strong>resolvers</strong>, and <strong>stores</strong></p>
+<p>The following section presents an overview of each module content:</p>
+<h2><a class="anchor" aria-hidden="true" id="app-module"></a><a href="#app-module" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>App Module</h2>
+<pre><code class="hljs">app/app.module.ts
+</code></pre>
+<p>App module is the <strong>main</strong> module, <strong>loaded by Angular bootstrap</strong>.</p>
+<p>App module contains all needed components and routing to display app home page.</p>
+<p>App module lazy loads Structure module when a user clicks on a structure in structures tree.</p>
+<h3><a class="anchor" aria-hidden="true" id="app-components"></a><a href="#app-components" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>App Components</h3>
+<h4><a class="anchor" aria-hidden="true" id="app"></a><a href="#app" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>App</h4>
+<pre><code class="hljs">app/app.component.ts
+</code></pre>
+<p>Bootstraped when module is loaded, it holds the <strong>main router outlet</strong></p>
+<h4><a class="anchor" aria-hidden="true" id="apphome"></a><a href="#apphome" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>AppHome</h4>
+<pre><code class="hljs">app/app-home.component.ts
+</code></pre>
+<p>Loaded by the main route <strong>/admin</strong>, it displays app <strong>home page message</strong>:</p>
+<p><img src="/documentation/docs/assets/images/home-msg.png" alt="Home message"></p>
+<blockquote>
+<p><strong>Note</strong></p>
+<p>Navigation header is handled by Navigation Component from Core Module, see <a href="#NavigationComponent">Navigation Component</a></p>
+</blockquote>
+<h3><a class="anchor" aria-hidden="true" id="app-routing"></a><a href="#app-routing" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>App Routing</h3>
+<pre><code class="hljs">app/app-routing.module.ts
+</code></pre>
+<p>Routing paths:</p>
+<p>/admin<br>
+Loads NavComponent (from Core module) and AppHomeComponent. Plus, fetches <strong>User session information</strong> and <strong>Structures list</strong> through <strong>Resolvers</strong> (<em>SessionResolve</em> and <em>StructuresResolve</em> from Core module).</p>
+<p>/admin/:structureId<br>
+Lazy load <a href="#_structure_module">section_title</a>. More info about lazy loading here: <a href="https://angular.io/guide/ngmodule#lazy-loading-modules-with-the-router">https://angular.io/guide/ngmodule#lazy-loading-modules-with-the-router</a></p>
+<h3><a class="anchor" aria-hidden="true" id="app-services"></a><a href="#app-services" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>App Services</h3>
+<p>App module uses Services from Core Module, see <a href="#_core_services">section_title</a> section to learn more about it.</p>
+<h3><a class="anchor" aria-hidden="true" id="app-stores"></a><a href="#app-stores" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>App Stores</h3>
+<p>App module uses <strong>Global Store</strong> from Core Module, see <a href="#_global_store">section_title</a> section to learn more about it.</p>
+<h2><a class="anchor" aria-hidden="true" id="core-module"></a><a href="#core-module" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Core Module</h2>
+<pre><code class="hljs">app/core/core.module.ts
+</code></pre>
+<p>Imported by App module, Core module contains app core elements:</p>
+<ul>
+<li><p>Navigation Component</p></li>
+<li><p>Services</p></li>
+<li><p>Resolvers</p></li>
+<li><p>Stores</p></li>
+</ul>
+<blockquote>
+<p><strong>Important</strong></p>
+<p>Core module should only be imported by App module, to prevent side effects. A guard has been implemented to prevent this, see file: app/core/module-import-guard.ts</p>
+</blockquote>
+<h3><a class="anchor" aria-hidden="true" id="core-components"></a><a href="#core-components" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Core Components</h3>
+<h4><a class="anchor" aria-hidden="true" id="nav"></a><a href="#nav" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Nav</h4>
+<pre><code class="hljs">app/core/nav/nav.component.ts
+</code></pre>
+<p>Loaded by the main route <strong>/admin</strong>, it displays <strong>nav header</strong>:</p>
+<p><img src="/documentation/docs/assets/images/nav-component1.png" alt="Nav header"></p>
+<p>and <strong>structures tree</strong>:</p>
+<p><img src="/documentation/docs/assets/images/nav-component2.png" alt="Structure tree"></p>
+<h3><a class="anchor" aria-hidden="true" id="core-services"></a><a href="#core-services" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Core Services</h3>
+<h4><a class="anchor" aria-hidden="true" id="spinner"></a><a href="#spinner" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Spinner</h4>
+<pre><code class="hljs">app/core/services/spinner.service.ts
+</code></pre>
+<p>Displays spinner while performing asynchonous task:</p>
+<p><img src="/documentation/docs/assets/images/spinner.png" alt="Spinner"></p>
+<p>Usage:</p>
+<pre><code class="hljs">loadingService.perform('&lt;spinner-placeholder&gt;', &lt;asynchronous-task&gt;)
+    .then()
+    .catch()
+</code></pre>
+<p>Loading service is used in combination with a <strong>spinner-cube</strong> tag in a component:</p>
+<pre><code class="hljs">&lt;spinner-cube class=&quot;portal-spinner&quot; waitingFor=&quot;portal-content&quot;&gt;&lt;/spinner-cube&gt;
+</code></pre>
+<p>where <em>waitingFor</em> attribute matches <em>&lt;spinner-placeholder&gt;</em>.</p>
+<blockquote>
+<p><strong>Tip</strong></p>
+<p>There is a spinner-cube tag in <em>app/core/nav/nav.component.ts</em></p>
+</blockquote>
+<h4><a class="anchor" aria-hidden="true" id="notify"></a><a href="#notify" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Notify</h4>
+<pre><code class="hljs">app/core/services/notify.service.ts
+</code></pre>
+<p>Displays Success/Error notification after user action:</p>
+<p><img src="/documentation/docs/assets/images/notify-success.png" alt="Notify success"></p>
+<p><img src="/documentation/docs/assets/images/notify-error.png" alt="Notify error"></p>
+<p>Usage:</p>
+<pre><code class="hljs">notifyService.success(
+    {   key: '&lt;content-i18n-key&gt;',
+        parameters: { user: this.user}
+    }, '&lt;title-i18n-key&gt;')
+)
+</code></pre>
+<p>will display a succesful notification pop-up for successful operation.</p>
+<p>Notify service also provides an error function to display error pop-up for failed operation.</p>
+<h4><a class="anchor" aria-hidden="true" id="plateforme-info"></a><a href="#plateforme-info" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Plateforme-info</h4>
+<pre><code class="hljs">app/core/services/plateforme-info.service.ts
+</code></pre>
+<p>Provides plateforme information, for example: is sms module enabled?</p>
+<h4><a class="anchor" aria-hidden="true" id="profiles"></a><a href="#profiles" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Profiles</h4>
+<pre><code class="hljs">app/core/services/profiles.service.ts
+</code></pre>
+<p>Gets User profiles list.</p>
+<h4><a class="anchor" aria-hidden="true" id="userlist-filters"></a><a href="#userlist-filters" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Userlist Filters</h4>
+<pre><code class="hljs">app/core/services/userlist.filters.service.ts
+</code></pre>
+<p>Services for User list filters, see <a href="https://github.com/web-education/reference-manual/blob/dev-front-WIP2017/first-steps/admin-v2-howto-addUserFilter.adoc">https://github.com/web-education/reference-manual/blob/dev-front-WIP2017/first-steps/admin-v2-howto-addUserFilter.adoc</a> to know how to add a new user filter.</p>
+<h4><a class="anchor" aria-hidden="true" id="userlist"></a><a href="#userlist" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Userlist</h4>
+<pre><code class="hljs">app/core/services/userlist.service.ts
+</code></pre>
+<p>Provides utils functions for <strong>sorting</strong>, <strong>filtering</strong>, <strong>paging</strong> a user list.</p>
+<h3><a class="anchor" aria-hidden="true" id="core-resolvers"></a><a href="#core-resolvers" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Core Resolvers</h3>
+<p>Resolvers are used by routing to fetch data needed by components before they are initialized. See <a href="https://angular.io/api/router/Resolve">https://angular.io/api/router/Resolve</a> for more details about Angular Resolvers.</p>
+<h4><a class="anchor" aria-hidden="true" id="session-resolver"></a><a href="#session-resolver" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Session Resolver</h4>
+<pre><code class="hljs">app/core/resolvers/session.resolve.ts
+</code></pre>
+<p>Gets user session information and stores it in Angular route data.</p>
+<p>Usage:</p>
+<p>Resolver is called by route /admin in app routing:</p>
+<pre><code class="hljs">path: 'admin', resolve: { session: SessionResolve }
+</code></pre>
+<p>where <em>session</em> is the storing Angular route data attribute.</p>
+<p>Then Navigation component retrieves information using Angular route data:</p>
+<pre><code class="hljs">this.session = this.route.snapshot.data['session']
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="structures-resolver"></a><a href="#structures-resolver" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Structures Resolver</h4>
+<pre><code class="hljs">app/core/resolvers/structures.resolve.ts
+</code></pre>
+<p>Syncs structures collection in Core <a href="#_global_store">section_title</a>.</p>
+<p>Usage:</p>
+<p>Resolver is called by route /admin in app routing:</p>
+<pre><code class="hljs">path: 'admin', resolve: { StructuresResolve }
+</code></pre>
+<p>Resolver syncs structures collection in Core Global Store:</p>
+<pre><code class="hljs">globalStore.structures.sync()
+</code></pre>
+<p>Then Navigation component retrieves structures from Global Store as a structures tree:</p>
+<pre><code class="hljs">this.structures = globalStore.structures.asTree()
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="i18n-resolver"></a><a href="#i18n-resolver" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>I18n Resolver</h4>
+<pre><code class="hljs">app/core/resolvers/i18n.resolve.ts
+</code></pre>
+<p>Loads i18n files bundle: fr.json, en.json…​</p>
+<p>Usage:</p>
+<p>Resolver is called by route /admin in app routing:</p>
+<pre><code class="hljs">path: 'admin', resolve: { I18nResolve }
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="core-stores"></a><a href="#core-stores" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Core Stores</h3>
+<h4><a class="anchor" aria-hidden="true" id="abstract-store"></a><a href="#abstract-store" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Abstract Store</h4>
+<pre><code class="hljs">app/core/store/abstract.store.ts
+</code></pre>
+<p>Abstract Store is the app Data Stores root class. It adds an observable to store attributes to trigger attribute changes → useful to detect when a store element has changed and do something accordingly</p>
+<h4><a class="anchor" aria-hidden="true" id="global-store"></a><a href="#global-store" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Global Store</h4>
+<pre><code class="hljs">app/core/store/global.store.ts
+</code></pre>
+<p>Extends Abstract Store. It contains the Structures Collection. Global store is used to retrieve structures collection. Example:</p>
+<pre><code class="hljs">import { globalStore } from 'path/to/store'
+
+let structures = globalStore.structures.data
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="structure-module"></a><a href="#structure-module" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Structure Module</h2>
+<p>Structure module root folder:</p>
+<pre><code class="hljs">app/structure
+</code></pre>
+<p>Structure module is defined in file:</p>
+<pre><code class="hljs">app/structure/structure.module.ts
+</code></pre>
+<p>Structure module is <strong>lazy loaded</strong> by App router for route <strong>/admin/:structureId</strong> (user picked a structure in the list).</p>
+<p>Structure module contains all needed components, routing and resolvers for displaying structure information.</p>
+<p>Structure module routing lazy loads <a href="#_users_module">section_title</a> and <a href="#_groups_module">section_title</a> when user clicks on User menu and Groups menu.</p>
+<blockquote>
+<p><strong>Tip</strong></p>
+<p>Structure module contains router outlet for displaying related users and groups.</p>
+</blockquote>
+<h3><a class="anchor" aria-hidden="true" id="structure-components"></a><a href="#structure-components" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Structure Components</h3>
+<h4><a class="anchor" aria-hidden="true" id="structure"></a><a href="#structure" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Structure</h4>
+<pre><code class="hljs">app/structure/structure.component.ts
+</code></pre>
+<p>Loaded by route <strong>/admin/:structureId</strong>, Structure component hosts the router outlet for StructureHome component and related Users and Groups module.</p>
+<h4><a class="anchor" aria-hidden="true" id="structurehome"></a><a href="#structurehome" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>StructureHome</h4>
+<pre><code class="hljs">app/structure/structure-home.component.ts
+</code></pre>
+<p>Loaded by route <strong>/admin/:structureId</strong> (as child), StructureHome component displays <strong>structure home page</strong>:</p>
+<p><img src="/documentation/docs/assets/images/structure-home.png" alt="Structure home"></p>
+<p>Cards are handled by following components:</p>
+<h4><a class="anchor" aria-hidden="true" id="quickactionscard"></a><a href="#quickactionscard" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>QuickActionsCard</h4>
+<pre><code class="hljs">app/structure/cards/quick-actions-card.component.ts
+</code></pre>
+<p>Card <strong>Quick actions</strong> displays links to actions:</p>
+<ul>
+<li><p>create user</p></li>
+<li><p>create group</p></li>
+<li><p>handle duplicate users</p></li>
+<li><p>handle signals</p></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="usersearchcard"></a><a href="#usersearchcard" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>UserSearchCard</h4>
+<pre><code class="hljs">app/structure/cards/user-search-card.component.ts
+</code></pre>
+<p>Card <strong>User search</strong> displays a user search input.</p>
+<h4><a class="anchor" aria-hidden="true" id="importsexportscard"></a><a href="#importsexportscard" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ImportsExportsCard</h4>
+<pre><code class="hljs">app/structure/cards/imports-exports-card.component.ts
+</code></pre>
+<p>Card <strong>Import/Export</strong> gives access to import export utilities.</p>
+<h4><a class="anchor" aria-hidden="true" id="structurecard"></a><a href="#structurecard" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>StructureCard</h4>
+<pre><code class="hljs">app/structure/cards/structure-card.component.ts
+</code></pre>
+<p>Card <strong>Structure</strong> gives access to manage connectors, widgets and applications.</p>
+<h3><a class="anchor" aria-hidden="true" id="structure-routing"></a><a href="#structure-routing" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Structure Routing</h3>
+<pre><code class="hljs">app/structure/structure-routing.module.ts
+</code></pre>
+<p>Routing paths:</p>
+<p>/admin/:structureId<br>
+Loads Structure and StructureHome components. Plus, fetches Structure information through <strong>StructureResolver</strong>:</p>
+<ul>
+<li><p>Classes</p></li>
+<li><p>Groups</p></li>
+<li><p>User Profiles</p></li>
+<li><p>Import Sources</p></li>
+<li><p>AAF functions</p></li>
+</ul>
+<p>/admin/:structureId/users<br>
+Lazy loads <a href="#_users_module">section_title</a></p>
+<p>/admin/:structureId/groups<br>
+Lazy loads <a href="#_groups_module">section_title</a></p>
+<h3><a class="anchor" aria-hidden="true" id="structure-resolvers"></a><a href="#structure-resolvers" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Structure Resolvers</h3>
+<pre><code class="hljs">app/structure/structure.resolve.ts
+</code></pre>
+<p>Fetches structure information and stores it in Angular route data structure attribute.</p>
+<p>Usage:</p>
+<p>Resolver is called by route /admin/:structureId in structure routing:</p>
+<pre><code class="hljs">path: '', component: StructureComponent, resolve: { structure: StructureResolve }
+</code></pre>
+<p>where <em>session</em> is the storing Angular route data attribute.</p>
+<p>Then StructureHome component retrieves information using an Observable on the route:</p>
+<pre><code class="hljs">this.routeSubscriber = this.route.data.subscribe(data =&gt; {
+    this.structure = data['structure']
+    this.cdRef.markForCheck()
+})
+</code></pre>
+<blockquote>
+<p><strong>Important</strong></p>
+<p>Do not confuse with <a href="#_structures_resolver">section_title</a> which fetches structures collection.</p>
+</blockquote>
+<h3><a class="anchor" aria-hidden="true" id="structure-stores"></a><a href="#structure-stores" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Structure Stores</h3>
+<p>No specific Store for Structure Module.</p>
+<h2><a class="anchor" aria-hidden="true" id="users-module"></a><a href="#users-module" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Users Module</h2>
+<p>Users module root folder:</p>
+<pre><code class="hljs">app/users
+</code></pre>
+<p>Users module is defined in file:</p>
+<pre><code class="hljs">app/users/users.module.ts
+</code></pre>
+<p>Users module is <strong>lazy loaded</strong> by structure router for route <strong>/admin/:structureId/users</strong> (after user clicked in Users icon in nav header)</p>
+<p>Users module contains all needed components, routing and resolvers for displaying users information.</p>
+<p>Users module components are displayed in structure router-outlet defined in Structure Component (app/structure/structure.component.ts).</p>
+<h3><a class="anchor" aria-hidden="true" id="users-components"></a><a href="#users-components" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Users Components</h3>
+<h4><a class="anchor" aria-hidden="true" id="users"></a><a href="#users" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Users</h4>
+<pre><code class="hljs">app/users/users.component.ts
+</code></pre>
+<p>Loaded by route <strong>/admin/:structureId/users</strong>, it is Users module <strong>root component</strong>.</p>
+<p>It contains the <strong>router outlet</strong> for Users components.</p>
+<p>It defines Users module page layout:</p>
+<ul>
+<li><p>Users module header: title + create user button,</p></li>
+<li><p>Users module body: <a href="#UserListComponent">UserList component</a> on left side and <a href="#UserDetailsComponent">UserDetails</a> or <a href="#UserCreateComponent">UserCreate</a> or <a href="#UserFiltersComponent">UserFilters</a> components on the right side:</p>
+<p><img src="/documentation/docs/assets/images/users-root.png" alt="Users component"></p></li>
+</ul>
+<blockquote>
+<p><strong>Tip</strong></p>
+<p>Users component saves selected user in <a href="#_users_store">section_title</a> after user clicked on user in user list.</p>
+</blockquote>
+<h4><a class="anchor" aria-hidden="true" id="userlist-1"></a><a href="#userlist-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>UserList</h4>
+<pre><code class="hljs">app/users/list/user-list.component.ts
+</code></pre>
+<p>Loaded by <a href="#UsersComponent">Users component</a>, it displays current structure users list:</p>
+<p><img src="/documentation/docs/assets/images/users-list.png" alt="Users list"></p>
+<h4><a class="anchor" aria-hidden="true" id="userdetail"></a><a href="#userdetail" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>UserDetail</h4>
+<pre><code class="hljs">app/users/details/user-details.component.ts
+</code></pre>
+<p>Loaded by route <strong>/admin/:structureId/users/:userId</strong>, it displays user details:</p>
+<p><img src="/documentation/docs/assets/images/user-details.png" alt="User details"></p>
+<blockquote>
+<p><strong>Note</strong></p>
+<p>Each section is a Component, defined in folder <em>app/users/details/sections</em></p>
+</blockquote>
+<h4><a class="anchor" aria-hidden="true" id="userfilters"></a><a href="#userfilters" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>UserFilters</h4>
+<pre><code class="hljs">app/users/filters/user-filters.component.ts
+</code></pre>
+<p>Loaded by route <strong>/admin/:structureId/users/filter</strong>, it displays user filters:</p>
+<p><img src="/documentation/docs/assets/images/user-filters.png" alt="User filters"></p>
+<h4><a class="anchor" aria-hidden="true" id="usercreate"></a><a href="#usercreate" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>UserCreate</h4>
+<pre><code class="hljs">app/users/create/user-create.component.ts
+</code></pre>
+<p>Loaded by route <strong>/admin/:structureId/users/create</strong>, it displays user creation form:</p>
+<p><img src="/documentation/docs/assets/images/user-create.png" alt="User create form"></p>
+<h3><a class="anchor" aria-hidden="true" id="users-routing"></a><a href="#users-routing" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Users Routing</h3>
+<pre><code class="hljs">app/users/users-routing.module.ts
+</code></pre>
+<p>Routing paths:</p>
+<p>/admin/:structureId/users<br>
+Loads <a href="#UsersComponent">Users Component</a> and fetches current <strong>structure users list</strong> through <a href="#_users_resolver">section_title</a> and saves it in <a href="#_users_store">section_title</a>.</p>
+<p>/admin/:structureId/users/filter<br>
+Loads <a href="#UserFiltersComponent">UserFilters Component</a>.</p>
+<blockquote>
+<p><strong>Tip</strong></p>
+<p>This is the route called after a user clicked on User module button in nav header.</p>
+</blockquote>
+<p>/admin/:structureId/users/:userId<br>
+Loads <a href="#UserDetailsComponent">UserDetails Component</a> after user selected a user in users list and fetches current user details through <a href="#_user_resolver">section_title</a> and saves infomation in <a href="#_users_store">section_title</a>.</p>
+<p>/admin/:structureId/users/create<br>
+Loads <a href="#UserCreateComponent">UserCreate Component</a> after a user clicked on Create user button.</p>
+<h3><a class="anchor" aria-hidden="true" id="users-resolvers"></a><a href="#users-resolvers" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Users Resolvers</h3>
+<h4><a class="anchor" aria-hidden="true" id="users-resolver"></a><a href="#users-resolver" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Users Resolver</h4>
+<h4><a class="anchor" aria-hidden="true" id="user-resolver"></a><a href="#user-resolver" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>User Resolver</h4>
+<h3><a class="anchor" aria-hidden="true" id="users-store"></a><a href="#users-store" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Users Store</h3>
+<h2><a class="anchor" aria-hidden="true" id="groups-module"></a><a href="#groups-module" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Groups Module</h2>
+<h3><a class="anchor" aria-hidden="true" id="groups-components"></a><a href="#groups-components" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Groups Components</h3>
+<h3><a class="anchor" aria-hidden="true" id="groups-routing"></a><a href="#groups-routing" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Groups Routing</h3>
+<h3><a class="anchor" aria-hidden="true" id="groups-stores"></a><a href="#groups-stores" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Groups Stores</h3>
+<h2><a class="anchor" aria-hidden="true" id="ux-module"></a><a href="#ux-module" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>UX Module</h2>
+<h1><a class="anchor" aria-hidden="true" id="infra-components-lib"></a><a href="#infra-components-lib" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Infra Components lib</h1>
+</span></div></article></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#root-folder">Root Folder</a></li><li><a href="#dependencies">Dependencies</a></li><li><a href="#build-files">Build Files</a><ul class="toc-headings"><li><a href="#entcore-build-file">Entcore Build File</a></li><li><a href="#admin-v2-build-files">Admin V2 Build Files</a></li></ul></li><li><a href="#resources">Resources</a><ul class="toc-headings"><li><a href="#styles-fonts">Styles &amp; Fonts</a></li><li><a href="#i18n">I18n</a></li></ul></li><li><a href="#typescript">TypeScript</a></li><li><a href="#app-module">App Module</a><ul class="toc-headings"><li><a href="#app-components">App Components</a></li><li><a href="#app-routing">App Routing</a></li><li><a href="#app-services">App Services</a></li><li><a href="#app-stores">App Stores</a></li></ul></li><li><a href="#core-module">Core Module</a><ul class="toc-headings"><li><a href="#core-components">Core Components</a></li><li><a href="#core-services">Core Services</a></li><li><a href="#core-resolvers">Core Resolvers</a></li><li><a href="#core-stores">Core Stores</a></li></ul></li><li><a href="#structure-module">Structure Module</a><ul class="toc-headings"><li><a href="#structure-components">Structure Components</a></li><li><a href="#structure-routing">Structure Routing</a></li><li><a href="#structure-resolvers">Structure Resolvers</a></li><li><a href="#structure-stores">Structure Stores</a></li></ul></li><li><a href="#users-module">Users Module</a><ul class="toc-headings"><li><a href="#users-components">Users Components</a></li><li><a href="#users-routing">Users Routing</a></li><li><a href="#users-resolvers">Users Resolvers</a></li><li><a href="#users-store">Users Store</a></li></ul></li><li><a href="#groups-module">Groups Module</a><ul class="toc-headings"><li><a href="#groups-components">Groups Components</a></li><li><a href="#groups-routing">Groups Routing</a></li><li><a href="#groups-stores">Groups Stores</a></li></ul></li><li><a href="#ux-module">UX Module</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/documentation/" class="nav-home"><img src="/documentation/img/favicon.ico" alt="Test Site" width="66" height="58"/></a><div><h5>Docs</h5><a href="/documentation/docs/en/doc1.html">Getting Started (or other categories)</a><a href="/documentation/docs/en/doc2.html">Guides (or other categories)</a><a href="/documentation/docs/en/doc3.html">API Reference (or other categories)</a></div><div><h5>Community</h5><a href="/documentation/en/users.html">User Showcase</a><a href="https://stackoverflow.com/questions/tagged/" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://discordapp.com/">Project Chat</a><a href="https://twitter.com/" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/documentation/blog">Blog</a><a href="https://github.com/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><a href="https://opensource.facebook.com/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/documentation/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright">Copyright © 2019 Your Name or Your Company Name</section></footer></div></body></html>

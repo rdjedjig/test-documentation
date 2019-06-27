@@ -1,0 +1,78 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>sniplets · Test Site</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;p&gt;Sniplets are comprised of both an applicative part (in typescript) and a view (in html).&lt;/p&gt;
+"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="sniplets · Test Site"/><meta property="og:type" content="website"/><meta property="og:url" content="https://SLedunois.github.io/documentation/"/><meta property="og:description" content="&lt;p&gt;Sniplets are comprised of both an applicative part (in typescript) and a view (in html).&lt;/p&gt;
+"/><meta property="og:image" content="https://SLedunois.github.io/documentation/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://SLedunois.github.io/documentation/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/documentation/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://SLedunois.github.io/documentation/blog/atom.xml" title="Test Site Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://SLedunois.github.io/documentation/blog/feed.xml" title="Test Site Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/documentation/js/scrollSpy.js"></script><link rel="stylesheet" href="/documentation/css/main.css"/><script src="/documentation/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/documentation/"><img class="logo" src="/documentation/img/favicon.ico" alt="Test Site"/><h2 class="headerTitleWithLogo">Test Site</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/documentation/docs/SUMMARY" target="_self">Docs</a></li><li class=""><a href="/documentation/help" target="_self">Help</a></li><li class=""><a href="/documentation/blog/" target="_self">Blog</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">sniplets</h1></header><article><div><span><p>Sniplets are comprised of both an applicative part (in typescript) and a view (in html).
+They are stored as a small JSON object which can point on an existing resource.
+Usually they are used to bring functionality from an application into another.</p>
+<p>For example, let’s say you have a todo list application, in which the user lists their tasks,
+and a wiki. You could display in the wiki a single todo list listing all tasks related to the wiki.
+That todo list would still be available in the todo app, but it would also be shown in the wiki,
+providing context.</p>
+<p>Given that the sniplet can have functionality that doesn’t exist in the app,
+you could also add custom interactions, like scrolling to the word “TODO” in the wiki
+when you click on a task.
+Sniplets inherit rights from their parents. That is, in our example,
+if the wiki is shared with an user, the todo list would be shared with the same user.
+If the todo list is shared with a user, however, this doesn’t change anything for the wiki.</p>
+<p>Sniplets have two states :</p>
+<ul>
+<li><p>the <em>source state</em> : the resource is undefined (for instance, the todo list haven’t been created)</p></li>
+<li><p>the <em>default state</em> : the resource has been defined</p></li>
+</ul>
+<p>As such, they have two views:</p>
+<ul>
+<li><p><code>/src/main/resources/public/template/behaviours/sniplet-source-mysniplet.html</code></p></li>
+<li><p><code>/src/main/resources/public/template/behaviours/sniplet-mysniplet.html</code></p></li>
+</ul>
+<p>Their AngularJS controller is defined in the Behaviours object.
+To add a sniplet, you first need a sniplets list :</p>
+<pre><code class="hljs">sniplets: {
+    mysniplet: {
+        title: ‘i18n.key.to.title’,
+        description: ‘i18n.key.to.description’,
+        controller: {
+            init: function() {
+                // This function is called in the default state
+                // when the sniplet is displayed
+                // This is where you can initialize data.
+
+                this;
+                // This is your current scope.
+
+                this.source;
+                // this.source contains all data you store in
+                // your sniplet. In the todo list example,
+                // it would be the todo list id.
+
+                this.snipletResource
+                // this.snipletResource is the resource containing
+                // the sniplet; in our example, it would be the wiki
+            },
+
+            initSource: function(){
+                // This function is called in the source state.
+                // Here you can load a list of resources to choose
+                // from.
+
+                // When you call setSnipletSource, you leave the
+                // source state to join the default state.
+                this.setSnipletSource({ _id: ‘my-resource-id})
+            },
+
+            myFunction: function(){
+                // this method can be called from either view
+            },
+
+            getReferencedResources: function(source){
+                // This function should return the list of all
+                // ids of the resources which need rights propagation
+                // Here, we only return the id of the todo list.
+                return [source._id]
+            }
+        }
+    }
+}
+</code></pre>
+<p>All methods in your sniplet controller will be available in your view, for instance:</p>
+<p>This calls myFunction :
+<code>&lt;button ng-click=”myFunction()”&gt;Click me&lt;/button&gt;</code></p>
+</span></div></article></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/documentation/" class="nav-home"><img src="/documentation/img/favicon.ico" alt="Test Site" width="66" height="58"/></a><div><h5>Docs</h5><a href="/documentation/docs/en/doc1.html">Getting Started (or other categories)</a><a href="/documentation/docs/en/doc2.html">Guides (or other categories)</a><a href="/documentation/docs/en/doc3.html">API Reference (or other categories)</a></div><div><h5>Community</h5><a href="/documentation/en/users.html">User Showcase</a><a href="https://stackoverflow.com/questions/tagged/" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://discordapp.com/">Project Chat</a><a href="https://twitter.com/" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/documentation/blog">Blog</a><a href="https://github.com/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><a href="https://opensource.facebook.com/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/documentation/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright">Copyright © 2019 Your Name or Your Company Name</section></footer></div></body></html>

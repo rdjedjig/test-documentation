@@ -1,0 +1,86 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>security · Test Site</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;p&gt;ODE Framework uses an hybrid security model in order to deal with the various cases you will come accross when designing and developing educational applications. It can be done in 4 ways :&lt;/p&gt;
+"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="security · Test Site"/><meta property="og:type" content="website"/><meta property="og:url" content="https://SLedunois.github.io/documentation/"/><meta property="og:description" content="&lt;p&gt;ODE Framework uses an hybrid security model in order to deal with the various cases you will come accross when designing and developing educational applications. It can be done in 4 ways :&lt;/p&gt;
+"/><meta property="og:image" content="https://SLedunois.github.io/documentation/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://SLedunois.github.io/documentation/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/documentation/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://SLedunois.github.io/documentation/blog/atom.xml" title="Test Site Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://SLedunois.github.io/documentation/blog/feed.xml" title="Test Site Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/documentation/js/scrollSpy.js"></script><link rel="stylesheet" href="/documentation/css/main.css"/><script src="/documentation/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/documentation/"><img class="logo" src="/documentation/img/favicon.ico" alt="Test Site"/><h2 class="headerTitleWithLogo">Test Site</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/documentation/docs/SUMMARY" target="_self">Docs</a></li><li class=""><a href="/documentation/help" target="_self">Help</a></li><li class=""><a href="/documentation/blog/" target="_self">Blog</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">security</h1></header><article><div><span><p>ODE Framework uses an hybrid security model in order to deal with the various cases you will come accross when designing and developing educational applications. It can be done in 4 ways :</p>
+<ul>
+<li><p><strong>AUTHENTICATED</strong> : The right grants user access if he is authenticated</p></li>
+<li><p><strong>WORKFLOW</strong> : The right grants user access to an application process. It is managed by an administrator</p></li>
+<li><p><strong>RESOURCE</strong> : The right grants user access to a resource process. It is managed by the resource’s owner</p></li>
+<li><p><strong>CUSTOM</strong> : the right grants access to anything the designer / developer want in the application.</p></li>
+</ul>
+<p>This document describes how to use the security framework.
+You can read the <a href="architecture/security.adoc">Security Architecture</a> document to understand the design choices.</p>
+<h1><a class="anchor" aria-hidden="true" id="rights-definition-and-convention"></a><a href="#rights-definition-and-convention" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Rights definition and convention</h1>
+<p>The right has to be defined on actions in a controller that extends <code>fr.wseduc.webutils.http.BaseController</code>.</p>
+<pre><code class="hljs">public class MyController extends BaseController {
+}
+</code></pre>
+<p>Actions are protected with a <code>SecuredAction’s annotation set up with the security policy you want. In the following example, acces to `GET myApp/message</code> is granted only for authenticated users.</p>
+<pre><code class="hljs">@Get(&quot;/message&quot;)
+@SecuredAction(value = &quot;&quot;, type = ActionType.AUTHENTICATED)
+public void getMessage(final HttpServerRequest request){
+    renderJson(request, new JsonObject().putString(&quot;message&quot;,&quot;coucou !&quot;));
+}
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="authenticated"></a><a href="#authenticated" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>AUTHENTICATED</h2>
+<p>To grant access to authenticated users, use :</p>
+<pre><code class="hljs">@SecuredAction(value = &quot;&quot;, type = ActionType.AUTHENTICATED)
+</code></pre>
+<blockquote>
+<p><strong>Note</strong></p>
+<p><code>value</code> is useless in this case. It can be empty</p>
+</blockquote>
+<h2><a class="anchor" aria-hidden="true" id="workflow"></a><a href="#workflow" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>WORKFLOW</h2>
+<p>To grant access to an application process managed by the administrator :</p>
+<pre><code class="hljs">@SecuredActioni18n.key.myRight&quot;, type = ActionType.WORKFLOW)
+// or
+@SecuredAction(value = &quot;i18n.key.myRight&quot;)
+</code></pre>
+<blockquote>
+<p><strong>Note</strong></p>
+<ul>
+<li><p><code>value</code> nains the i18n key of the right displayed in adminitration UI</p></li>
+<li><p><code>type</code> can be omitted. The defaut type for SecuredAction is WORKFLOW</p></li>
+</ul>
+<p><strong>Warning</strong></p>
+<p>When you mark an action with a WORKFLOW right, rebuild and restart your platform.
+Connect to the adminitration UI. In application management section you will discover your new WORFLOW’s right.</p>
+</blockquote>
+<h2><a class="anchor" aria-hidden="true" id="resource"></a><a href="#resource" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>RESOURCE</h2>
+<p>To grant access to an resource’s process managed by the resource’s owner :</p>
+<pre><code class="hljs">@SecuredAction(value = &quot;i18n.key.myRight.[read|contrib|manager|publish|comment]&quot;, type = ActionType.RESOURCE)
+</code></pre>
+<p>WARN : <code>value</code> i18n key must be suffixed with &quot;.read&quot;, &quot;.contrib&quot;, &quot;.manager&quot;, &quot;.publish&quot; or &quot;.comment&quot;.
+This convention is used by the framework to group fine grained rights into generic one’s.
+Those generic right are displayed to the end user in the share panel directive</p>
+<h2><a class="anchor" aria-hidden="true" id="custom"></a><a href="#custom" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>CUSTOM</h2>
+<p>To grant access to a specific process with spécific rules,
+you can yan use or develop a <code>RessourceFilter</code> :</p>
+<pre><code class="hljs">@ResourceFilter(MyResourceFilter.class)
+@SecuredAction(value = &quot;&quot;, type = ActionTypeMyResourceFilterRESOURCE)
+</code></pre>
+<blockquote>
+<p><strong>Warning</strong></p>
+<p><code>value</code> must be empty to allow the framework to load a custom ResourceFilter.</p>
+</blockquote>
+<p>You can find ready to use RessourceFilter in <code>org.entcore.common.http.filter</code> package, like <code>OwnerOnly</code> or <code>SuperAdminFilter</code></p>
+<p>To add a custom filter to your application write a class that implements <code>ResourcesProvider</code> interface.</p>
+<pre><code class="hljs">public interface ResourcesProvider {
+
+    void authorize(HttpServerRequest resourceRequest, Binding binding,
+                   UserInfos user, Handler&lt;Boolean&gt; handler);
+
+}
+</code></pre>
+<p>In <code>authorized</code> method you have acces to request context through</p>
+<ul>
+<li><p><code>resourceRequest</code> : the current http request</p></li>
+<li><p><code>user</code> : the current user’s UserInfos</p></li>
+<li><p><code>binding</code> : the current action</p></li>
+</ul>
+<p>And you can request the database to check specific stuff.</p>
+<blockquote>
+<p><strong>Warning</strong></p>
+<p>Be aware that your code will be comupte every time the associated action is requested.
+So you are accountable for the performance concerns.</p>
+</blockquote>
+</span></div></article></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#authenticated">AUTHENTICATED</a></li><li><a href="#workflow">WORKFLOW</a></li><li><a href="#resource">RESOURCE</a></li><li><a href="#custom">CUSTOM</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/documentation/" class="nav-home"><img src="/documentation/img/favicon.ico" alt="Test Site" width="66" height="58"/></a><div><h5>Docs</h5><a href="/documentation/docs/en/doc1.html">Getting Started (or other categories)</a><a href="/documentation/docs/en/doc2.html">Guides (or other categories)</a><a href="/documentation/docs/en/doc3.html">API Reference (or other categories)</a></div><div><h5>Community</h5><a href="/documentation/en/users.html">User Showcase</a><a href="https://stackoverflow.com/questions/tagged/" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://discordapp.com/">Project Chat</a><a href="https://twitter.com/" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/documentation/blog">Blog</a><a href="https://github.com/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><a href="https://opensource.facebook.com/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/documentation/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright">Copyright © 2019 Your Name or Your Company Name</section></footer></div></body></html>
